@@ -13,21 +13,21 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: mhils/workflows/checkout@481eaf3cc2ad8eb664a4c9a20cc635d46e02b5c6
-      - uses: mhils/workflows/setup-uv@481eaf3cc2ad8eb664a4c9a20cc635d46e02b5c6
+      - uses: mhils/workflows/checkout@589b2878317d2d57c315c5825f9a1cfe9c76a7c3
+      - uses: mhils/workflows/setup-uv@589b2878317d2d57c315c5825f9a1cfe9c76a7c3
 
       # If we need to update the lockfile (--check returns an error),
       # make sure to upgrade everything.
       - run: uv lock --check || uv lock --upgrade
 
-      - uses: mhils/workflows/uv-sync@481eaf3cc2ad8eb664a4c9a20cc635d46e02b5c6
+      - uses: mhils/workflows/uv-sync@589b2878317d2d57c315c5825f9a1cfe9c76a7c3
 
       - run: ruff check --fix-only .
       - run: ruff format .
 
       - run: web/gen/all
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .github/node-version.txt
       - run: npm ci
@@ -40,4 +40,4 @@ jobs:
 
       - uses: mhils/add-pr-ref-in-changelog@main
 
-      - uses: autofix-ci/action@635ffb0c9798bd160680f18fd73371e355b85f27
+      - uses: autofix-ci/action@c5b2d67aa2274e7b5a18224e8171550871fc7e4a
