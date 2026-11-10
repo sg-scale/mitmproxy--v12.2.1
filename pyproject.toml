@@ -89,8 +89,8 @@ ruff = [
     "ruff==0.14.3",
 ]
 deploy = [
-    "awscli==1.42.64",
-    "twine==6.2.0",
+    "awscli==1.46.3",
+    "twine==7.0.0",
 ]
 
 [project.urls]
